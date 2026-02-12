@@ -1,12 +1,10 @@
 import json
-import uuid
 from confluent_kafka import Producer
 import time
 
 from mongo_connection import MongoManager
 
 connection = MongoManager()
-
 
 
 producer_config = {
