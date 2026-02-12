@@ -25,3 +25,10 @@ class MongoManager:
             print(f"connection failed: {e}")
             return None
 
+    def get(self):
+        try:
+            results = self.collection.find({}).to_list()
+            return results
+        except Exception as e:
+            print(f"opertion failed: {e}")
+            return None
