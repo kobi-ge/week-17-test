@@ -34,9 +34,9 @@ class MysqlManager:
             fields_table1 = "id VARCHAR(30) PRIMARY KEY," \
                             "type VARCHAR(20)," \
                             "customerNumber INT," \
-                            "customerName VARCHAR(30)," \
-                            "contactLastName VARCHAR(30)," \
-                            "cuntactFirstName VARCHAR(30)," \
+                            "customerName VARCHAR(70)," \
+                            "contactLastName VARCHAR(70)," \
+                            "cuntactFirstName VARCHAR(70)," \
                             "phone VARCHAR(12)," \
                             "addressLine1 VARCHAR(20)," \
                             "addressLine2 VARCHAR(20)," \
@@ -56,7 +56,7 @@ class MysqlManager:
                             "shippedDate VARCHAR(30)," \
                             "status VARCHAR(30)," \
                             "comments VARCHAR(30)," \
-                            "customerNumber INT FOREIGN KEY REFERENCES customers customerNumber"
+                            "customerNumber INT"
             query_table2 = f"CREATE TABLE IF NOT EXISTS orders ({fields_table2})"
             self.cursor.execute(query_table2)
             self.connection.commit()
@@ -64,20 +64,12 @@ class MysqlManager:
         except mysql.connector.Error as e:
             print(f"the following error occured: {e}")
 
-    def insert_customers(self):
-        columns = "_id," \
-                    "type," \
-                    "customerNumber," \
-                    "customerName," \
-                    "contactLastName," \
-                    "contactFirstName," \
-                    "phone," \
-                    "addressLine1," \
-                    "addressLine2," \
-                    "city," \
-                    "state," \
-                    "postalCode," \
-                    "country," \
-                    "salesRepEmployeeNumber," \
-                    "creditLimit"
-        values = ""
+    def insert(self, table_name, columns, values, row):
+        try:
+            query = f"INSERT INTO {table_name} ({columns}) VALUES ({values})"
+            self.cursor.execute(query, row)
+            self.connection.commit()
+        except mysql.connector.Error as e:
+            print(f"the following error occured: {e}")
+
+    
