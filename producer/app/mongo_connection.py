@@ -5,13 +5,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-# host = os.getenv("MONGO_HOST", "localhost")
-# port= int(os.getenv("MONGO_PORT", 27017))
-# username= os.getenv("MONGO_USERNAME", "kobi")
-# password= os.getenv("MONGO_PASSWORD", "pass")
-#uri = f"mongodb://{username}:{password}@{host}:{port}"
-#print(uri)
-uri = "mongodb://localhost:27017/"
+host = os.getenv("MONGO_HOST", "localhost")
+port= int(os.getenv("MONGO_PORT", 27017))
+username= os.getenv("MONGO_USERNAME", "kobi")
+password= os.getenv("MONGO_PASSWORD", "pass")
+uri = f"mongodb://{username}:{password}@{host}:{port}"
+print(uri)
+#uri = "mongodb://localhost:27017/"
 
 class MongoManager:
     def __init__(self):

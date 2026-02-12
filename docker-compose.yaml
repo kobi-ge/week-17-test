@@ -27,7 +27,6 @@ services:
     volumes:
       - kafka_kraft:/var/lib/kafka/data
 
-
   
   api:
     build: ./producer
@@ -52,3 +51,4 @@ services:
 
 volumes:
   kafka_kraft:
+
